@@ -35,9 +35,9 @@
   </dependency>
 </dependencies>
 ```
-## 3 快速开始
+## 2 快速开始
 
-### 3.1 配置
+### 2.1 配置
 Spring Boot 项目将根据 application.yml 中的 simple.sms 自动配置。
 
 ```yml
@@ -60,7 +60,7 @@ simple:
     region:
 ```
 
-### 3.2 使用
+### 2.2 使用
 ```java
 @Autowired
 private SimpleSmsClient simpleSmsClient;
