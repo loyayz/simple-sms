@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.loyayz</groupId>
+        <artifactId>build</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>simple-sms</artifactId>
+    <version>1.0.0</version>
+
+    <name>simple sms</name>
+    <description>simple sms</description>
+    <url>https://github.com/loyayz/simple-sms</url>
+
+    <properties>
+        <aliyun-sdk.version>4.5.18</aliyun-sdk.version>
+        <tencentcloud-sdk.version>4.0.11</tencentcloud-sdk.version>
+        <qiniu-sdk.version>7.4.0</qiniu-sdk.version>
+
+        <spring-boot.version>2.4.3</spring-boot.version>
+        <lombok.version>1.18.18</lombok.version>
+    </properties>
+
+    <dependencies>
+        <!-- 阿里云 -->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>${aliyun-sdk.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <!-- 腾讯 -->
+        <dependency>
+            <groupId>com.tencentcloudapi</groupId>
+            <artifactId>tencentcloud-sdk-java</artifactId>
+            <version>${tencentcloud-sdk.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <!-- 七牛 -->
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>${qiniu-sdk.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+            <version>${spring-boot.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>${spring-boot.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+</project>

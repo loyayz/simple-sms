@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.loyayz.simple.sms.autoconfigure.SimpleSmsAutoConfiguration,\
+com.loyayz.simple.sms.autoconfigure.SimpleSmsAliyunAutoConfiguration,\
+com.loyayz.simple.sms.autoconfigure.SimpleSmsTencentAutoConfiguration,\
+com.loyayz.simple.sms.autoconfigure.SimpleSmsQiniuAutoConfiguration
