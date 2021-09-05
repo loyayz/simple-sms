@@ -11,6 +11,6 @@ public interface SimpleSmsClient {
      * @param info 短信内容
      * @return 结果
      */
-    SmsResult send(SmsRequest info);
+    SmsResponse send(SmsRequest info);
 
 }

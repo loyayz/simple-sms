@@ -5,10 +5,10 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author loyayz (loyayz@foxmail.com)
@@ -36,30 +36,70 @@ public class SmsRequest implements Serializable {
     /**
      * 参数列表
      */
-    private Map<String, String> params = new LinkedHashMap<>(8);
+    private final Map<String, String> params = new LinkedHashMap<>(8);
     /**
-     * 号码列表
+     * 手机号码列表
      */
-    private List<String> phoneNumbers = new ArrayList<>();
+    private final Set<String> phoneNumbers = new HashSet<>();
 
     public SmsRequest(String templateId) {
         this.templateId = templateId;
     }
 
-    public SmsRequest addParams(String key, String val) {
-        params.put(key, val);
+    /**
+     * 添加参数
+     *
+     * @param key 参数编码
+     * @param val 参数值
+     * @return this
+     */
+    public SmsRequest addParam(String key, String val) {
+        this.params.put(key, val);
         return this;
     }
 
-    public SmsRequest addPhoneNumber(String phoneNumber) {
-        phoneNumbers.add(phoneNumber);
+    /**
+     * 添加参数
+     *
+     * @param params 参数
+     * @return this
+     */
+    public SmsRequest addParams(Map<String, String> params) {
+        if (params != null) {
+            this.params.putAll(params);
+        }
         return this;
     }
 
-    public String[] getNationPhoneNumbers() {
-        return phoneNumbers.stream()
+    /**
+     * 添加手机号码
+     *
+     * @param phoneNumbers 手机号码。多值用逗号隔开
+     * @return this
+     */
+    public SmsRequest addPhoneNumbers(String... phoneNumbers) {
+        if (phoneNumbers == null) {
+            return this;
+        }
+        String sep = ",";
+        for (String phoneNumber : phoneNumbers) {
+            if (phoneNumber == null) {
+                continue;
+            }
+            for (String num : phoneNumber.split(sep)) {
+                num = num.trim();
+                if (!num.isEmpty()) {
+                    this.phoneNumbers.add(num);
+                }
+            }
+        }
+        return this;
+    }
+
+    public String[] getPhoneNumberArray(boolean nationPrefix) {
+        return this.phoneNumbers.stream()
                 .map(number -> {
-                    if (!number.startsWith("+")) {
+                    if (nationPrefix && !number.startsWith("+")) {
                         number = "+86" + number;
                     }
                     return number;

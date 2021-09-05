@@ -8,7 +8,7 @@ import com.qiniu.util.Auth;
 import io.simpleframework.sms.SimpleSmsClient;
 import io.simpleframework.sms.SimpleSmsProperties;
 import io.simpleframework.sms.SmsRequest;
-import io.simpleframework.sms.SmsResult;
+import io.simpleframework.sms.SmsResponse;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -32,13 +32,13 @@ public class QiniuSmsClient implements SimpleSmsClient {
     }
 
     @Override
-    public SmsResult send(SmsRequest request) {
+    public SmsResponse send(SmsRequest request) {
         try {
-            String[] phoneNumbers = request.getPhoneNumbers().toArray(new String[0]);
+            String[] phoneNumbers = request.getPhoneNumberArray(false);
             Response response = smsManager.sendMessage(request.getTemplateId(), phoneNumbers, request.getParams());
-            return new SmsResult(response.isOK(), response.reqId, String.valueOf(response.statusCode), response.toString());
+            return new SmsResponse(response.isOK(), response.reqId, String.valueOf(response.statusCode), response.toString());
         } catch (QiniuException e) {
-            return SmsResult.fail(e);
+            return SmsResponse.fail(e);
         }
     }
 

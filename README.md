@@ -66,8 +66,8 @@ simple:
 private SimpleSmsClient simpleSmsClient;
 
 public void test() {
-    SmsRequest request = new SmsRequest("templateId").addPhoneNumber("phoneNumber");
-    SmsResult result = simpleSmsClient.send(request);
+    SmsRequest request = new SmsRequest("templateId").addPhoneNumbers("phoneNumbers");
+    SmsResponse response = simpleSmsClient.send(request);
 }
 
 [使用示例](https://github.com/loyayz/simple-sample)

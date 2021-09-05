@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 @Data
 @NoArgsConstructor
-public class SmsResult implements Serializable {
+public class SmsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -34,15 +34,15 @@ public class SmsResult implements Serializable {
      */
     private Exception exception;
 
-    public SmsResult(boolean success, String requestId, String code, String message) {
+    public SmsResponse(boolean success, String requestId, String code, String message) {
         this.success = success;
         this.requestId = requestId;
         this.code = code;
         this.message = message;
     }
 
-    public static SmsResult fail(Exception e) {
-        SmsResult result = new SmsResult();
+    public static SmsResponse fail(Exception e) {
+        SmsResponse result = new SmsResponse();
         result.setSuccess(false);
         result.setMessage(e.getMessage());
         result.setException(e);

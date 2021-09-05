@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 import io.simpleframework.sms.SimpleSmsClient;
 import io.simpleframework.sms.SimpleSmsProperties;
 import io.simpleframework.sms.SmsRequest;
-import io.simpleframework.sms.SmsResult;
+import io.simpleframework.sms.SmsResponse;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Map;
@@ -39,7 +39,7 @@ public class AliyunSmsClient implements SimpleSmsClient {
     }
 
     @Override
-    public SmsResult send(SmsRequest request) {
+    public SmsResponse send(SmsRequest request) {
         CommonRequest req = new CommonRequest();
         try {
             req.setSysMethod(MethodType.POST);
@@ -53,7 +53,7 @@ public class AliyunSmsClient implements SimpleSmsClient {
             CommonResponse response = acsClient.getCommonResponse(req);
             return toResult(response);
         } catch (Exception e) {
-            return SmsResult.fail(e);
+            return SmsResponse.fail(e);
         }
     }
 
@@ -64,7 +64,7 @@ public class AliyunSmsClient implements SimpleSmsClient {
         return smsProperties.getDefaultSignName();
     }
 
-    private static SmsResult toResult(CommonResponse response) {
+    private static SmsResponse toResult(CommonResponse response) {
         Map res = new Gson().fromJson(response.getData(), Map.class);
         String code = res.get("Code").toString();
         boolean success = response.getHttpStatus() == 200 && "OK".equalsIgnoreCase(code);
@@ -72,7 +72,7 @@ public class AliyunSmsClient implements SimpleSmsClient {
         Object msg = res.get("Message");
         String requestId = reqId == null ? null : reqId.toString();
         String message = msg == null ? "" : msg.toString();
-        return new SmsResult(success, requestId, code, message);
+        return new SmsResponse(success, requestId, code, message);
     }
 
 }

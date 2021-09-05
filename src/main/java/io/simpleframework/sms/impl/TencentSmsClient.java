@@ -8,7 +8,7 @@ import com.tencentcloudapi.sms.v20190711.models.SendStatus;
 import io.simpleframework.sms.SimpleSmsClient;
 import io.simpleframework.sms.SimpleSmsProperties;
 import io.simpleframework.sms.SmsRequest;
-import io.simpleframework.sms.SmsResult;
+import io.simpleframework.sms.SmsResponse;
 
 /**
  * @author loyayz (loyayz@foxmail.com)
@@ -28,18 +28,18 @@ public class TencentSmsClient implements SimpleSmsClient {
     }
 
     @Override
-    public SmsResult send(SmsRequest request) {
+    public SmsResponse send(SmsRequest request) {
         try {
             SendSmsRequest req = new SendSmsRequest();
             req.setSmsSdkAppid(this.appId(request.getAppId()));
             req.setSign(this.signName(request.getSignName()));
             req.setTemplateID(request.getTemplateId());
-            req.setPhoneNumberSet(request.getNationPhoneNumbers());
+            req.setPhoneNumberSet(request.getPhoneNumberArray(true));
             req.setTemplateParamSet(request.getParams().values().toArray(new String[0]));
             SendSmsResponse response = smsClient.SendSms(req);
             return toResult(response);
         } catch (Exception e) {
-            return SmsResult.fail(e);
+            return SmsResponse.fail(e);
         }
     }
 
@@ -57,12 +57,12 @@ public class TencentSmsClient implements SimpleSmsClient {
         return smsProperties.getDefaultSignName();
     }
 
-    private static SmsResult toResult(SendSmsResponse response) {
+    private static SmsResponse toResult(SendSmsResponse response) {
         SendStatus[] statuses = response.getSendStatusSet();
         String code = statuses == null ? null : statuses[0].getCode();
         String message = statuses == null ? "" : statuses[0].getMessage();
         boolean success = "OK".equalsIgnoreCase(code);
-        return new SmsResult(success, response.getRequestId(), code, message);
+        return new SmsResponse(success, response.getRequestId(), code, message);
     }
 
 }
