@@ -1,8 +1,8 @@
-package com.loyayz.simple.sms.autoconfigure;
+package io.simpleframework.sms.autoconfigure;
 
-import com.loyayz.simple.sms.SimpleSmsClient;
-import com.loyayz.simple.sms.SimpleSmsProperties;
-import com.loyayz.simple.sms.impl.AliyunSmsClient;
+import io.simpleframework.sms.SimpleSmsClient;
+import io.simpleframework.sms.SimpleSmsProperties;
+import io.simpleframework.sms.impl.TencentSmsClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -15,15 +15,15 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @AutoConfigureAfter(SimpleSmsAutoConfiguration.class)
-@ConditionalOnProperty(value = "simple.sms.provider", havingValue = "aliyun")
+@ConditionalOnProperty(value = "simple.sms.provider", havingValue = "tencent")
 @RequiredArgsConstructor
-public class SimpleSmsAliyunAutoConfiguration {
+public class SimpleSmsTencentAutoConfiguration {
     private final SimpleSmsProperties smsProperties;
 
     @Bean
     @ConditionalOnMissingBean(SimpleSmsClient.class)
     public SimpleSmsClient simpleSmsClient() {
-        return new AliyunSmsClient(smsProperties);
+        return new TencentSmsClient(smsProperties);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.loyayz.simple.sms;
+package io.simpleframework.sms;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

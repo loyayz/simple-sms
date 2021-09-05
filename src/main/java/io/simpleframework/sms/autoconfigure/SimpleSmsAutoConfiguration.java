@@ -1,6 +1,6 @@
-package com.loyayz.simple.sms.autoconfigure;
+package io.simpleframework.sms.autoconfigure;
 
-import com.loyayz.simple.sms.SimpleSmsProperties;
+import io.simpleframework.sms.SimpleSmsProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;

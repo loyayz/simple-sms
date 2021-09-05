@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.loyayz</groupId>
+        <groupId>io.simpleframework</groupId>
         <artifactId>build</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.2</version>
     </parent>
 
     <artifactId>simple-sms</artifactId>
@@ -17,12 +17,12 @@
     <url>https://github.com/loyayz/simple-sms</url>
 
     <properties>
-        <aliyun-sdk.version>4.5.18</aliyun-sdk.version>
+        <aliyun-sdk.version>4.5.25</aliyun-sdk.version>
         <tencentcloud-sdk.version>4.0.11</tencentcloud-sdk.version>
-        <qiniu-sdk.version>7.4.0</qiniu-sdk.version>
+        <qiniu-sdk.version>7.8.0</qiniu-sdk.version>
 
-        <spring-boot.version>2.4.3</spring-boot.version>
-        <lombok.version>1.18.18</lombok.version>
+        <spring-boot.version>2.5.4</spring-boot.version>
+        <lombok.version>1.18.20</lombok.version>
     </properties>
 
     <dependencies>

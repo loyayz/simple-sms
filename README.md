@@ -1,5 +1,5 @@
 # simple-sms
-[![Maven central](https://maven-badges.herokuapp.com/maven-central/com.loyayz/simple-sms/badge.svg)](https://mvnrepository.com/artifact/com.loyayz/simple-sms)
+[![Maven central](https://maven-badges.herokuapp.com/maven-central/io.simpleframework/simple-sms/badge.svg)](https://mvnrepository.com/artifact/io.simpleframework/simple-sms)
 
 基于`阿里云/腾讯云/七牛`实现的简单短信客户端。
 
@@ -8,7 +8,7 @@
 ```xml
 <dependencies>
   <dependency>
-    <groupId>com.loyayz</groupId>
+    <groupId>io.simpleframework</groupId>
     <artifactId>simple-sms</artifactId>
     <version>1.0.0</version>
   </dependency>

@@ -1,14 +1,14 @@
-package com.loyayz.simple.sms.impl;
+package io.simpleframework.sms.impl;
 
-import com.loyayz.simple.sms.SimpleSmsClient;
-import com.loyayz.simple.sms.SimpleSmsProperties;
-import com.loyayz.simple.sms.SmsRequest;
-import com.loyayz.simple.sms.SmsResult;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.sms.v20190711.SmsClient;
 import com.tencentcloudapi.sms.v20190711.models.SendSmsRequest;
 import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
 import com.tencentcloudapi.sms.v20190711.models.SendStatus;
+import io.simpleframework.sms.SimpleSmsClient;
+import io.simpleframework.sms.SimpleSmsProperties;
+import io.simpleframework.sms.SmsRequest;
+import io.simpleframework.sms.SmsResult;
 
 /**
  * @author loyayz (loyayz@foxmail.com)

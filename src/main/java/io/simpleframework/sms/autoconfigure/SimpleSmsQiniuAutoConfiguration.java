@@ -1,8 +1,8 @@
-package com.loyayz.simple.sms.autoconfigure;
+package io.simpleframework.sms.autoconfigure;
 
-import com.loyayz.simple.sms.SimpleSmsClient;
-import com.loyayz.simple.sms.SimpleSmsProperties;
-import com.loyayz.simple.sms.impl.QiniuSmsClient;
+import io.simpleframework.sms.SimpleSmsClient;
+import io.simpleframework.sms.SimpleSmsProperties;
+import io.simpleframework.sms.impl.QiniuSmsClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

@@ -1,4 +1,4 @@
-package com.loyayz.simple.sms;
+package io.simpleframework.sms;
 
 /**
  * @author loyayz (loyayz@foxmail.com)
