@@ -15,7 +15,7 @@ public class SimpleSmsAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean(SimpleSmsProperties.class)
     @ConfigurationProperties(prefix = "simple.sms")
-    public SimpleSmsProperties simpleOssProperties() {
+    public SimpleSmsProperties simpleSmsProperties() {
         return new SimpleSmsProperties();
     }
 
